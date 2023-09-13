@@ -8,6 +8,16 @@ public class Emprunte {
     private int isbn;
     private int num_national;
 
+    public Emprunte() {
+    }
+
+    public Emprunte(Date date_emprunte, Date date_retour, int isbn, int num_national) {
+        this.date_emprunte = date_emprunte;
+        this.date_retour = date_retour;
+        this.isbn = isbn;
+        this.num_national = num_national;
+    }
+
     public Date getDate_emprunte() {
         return date_emprunte;
     }
@@ -48,8 +58,5 @@ public class Emprunte {
                 ", isbn=" + isbn +
                 ", num_national=" + num_national +
                 '}';
-    }
-
-    public Emprunte() {
     }
 }

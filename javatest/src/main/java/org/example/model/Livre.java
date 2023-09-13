@@ -1,20 +1,21 @@
 package org.example.model;
 
+import java.util.Date;
+
 public class Livre {
     private int isbn;
     private String titre;
     private String auteur;
 
-    private String available;
+    private int available;
 
     public Livre() {
     }
 
-    public Livre(int isbn, String titre, String auteur,  String available) {
+    public Livre(int isbn, String titre, String auteur, int available) {
         this.isbn = isbn;
         this.titre = titre;
         this.auteur = auteur;
-
         this.available = available;
     }
 
@@ -42,22 +43,21 @@ public class Livre {
         this.auteur = auteur;
     }
 
-
-
-    public String getAvailable() {
+    public int getAvailable() {
         return available;
     }
 
-    public void setAvailable(String available) {
+    public void setAvailable(int available) {
         this.available = available;
     }
 
     @Override
     public String toString() {
-        return "Livre{isbn=" + isbn +
+        return "Livre{" +
+                "isbn=" + isbn +
                 ", titre='" + titre + '\'' +
                 ", auteur='" + auteur + '\'' +
-                ", available='" + available + '\'' +
+                ", available=" + available +
                 '}';
     }
 }

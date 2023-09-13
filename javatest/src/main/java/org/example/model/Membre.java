@@ -7,6 +7,13 @@ public class Membre {
     private String prenom;
 
     public Membre(int num_national, String nom, String prenom) {
+        this.nom = nom;
+        this.num_national = num_national;
+        this.prenom = prenom;
+    }
+
+    public Membre() {
+
     }
 
     public int getNum_national() {

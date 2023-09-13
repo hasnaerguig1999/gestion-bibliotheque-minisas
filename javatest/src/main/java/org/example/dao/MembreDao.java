@@ -6,11 +6,16 @@ import java.util.List;
 
 public interface MembreDao {
     List<Membre> findAll();
-    Membre findByIsbn(int num_national);
-    void save(Membre membre);
-    void deleteByIsbn(int num_national);
+
+    Membre findByNum_national(int num_national);
+    int save(Membre membre);
+
+    int save();
+    void update (Membre membre);
 
     void deleteByNum_national(int num_national);
+
+    void saveMember(Membre membre) ;
 
     // List<Membre> findAllByAuteurOrTitre(String AuteurTitre);
 }
