@@ -135,18 +135,36 @@ public class LivreDaoImpl implements LivreDao {
         if (con == null) {
             return;
         }
-        String query = "DELETE from livre WHERE isbn=?";
-        try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
+        String query = "SELECT * FROM livre WHERE isbn=?";
+        try (PreparedStatement preparedStatement = con.prepareStatement((query))){
             preparedStatement.setInt(1, isbn);
-            preparedStatement.executeUpdate();
 
-        } catch (SQLException se) {
-            se.printStackTrace();
+            ResultSet resultSet = preparedStatement.executeQuery();
+            int available= 0;
+            while (resultSet.next()){
+                available = resultSet.getInt("available");
+            }
+            if (available != 1){
+                String query2 = "DELETE FROM `livre` WHERE `isbn`= ?";
+                try (PreparedStatement preparedStatement2 = con.prepareStatement(query2);) {
+
+                    preparedStatement2.setInt(1, isbn);
+
+                    preparedStatement2.executeUpdate();
+
+                } catch (SQLException se) {
+                    se.printStackTrace();
+                }
+            }else {
+                System.out.println("On ne peut pas supprimer ce livre qui contient ISBN = "+isbn);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         } finally {
             try {
                 con.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
         }
 
@@ -358,11 +376,6 @@ public class LivreDaoImpl implements LivreDao {
             }
         }
         return Statistique;
-    }
-
-    @Override
-    public void perduBook(String ISBN) {
-
     }
 
 

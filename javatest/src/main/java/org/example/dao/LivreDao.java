@@ -22,5 +22,4 @@ public interface LivreDao {
 
      int statistique(int available);
 
-     void perduBook(String ISBN);
 }

@@ -126,12 +126,6 @@ public class Main {
 
                             System.out.println("Afficher les membres");
                             MembreDao.findAll().forEach(System.out::println);
-
-
-
-
-
-
                             break;
                         case 2:
                             System.out.println("Ajoutez membre");
